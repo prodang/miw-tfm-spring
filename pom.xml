@@ -15,6 +15,7 @@
 	<description>App TFM UPM</description>
 	<properties>
 		<java.version>11</java.version>
+		<jacoco.version>0.8.5</jacoco.version>
 	</properties>
 	<dependencies>
 		<dependency>
