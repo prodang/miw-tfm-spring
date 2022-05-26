@@ -9,4 +9,6 @@ import java.util.List;
 public interface EmployeePersistence {
 
     List<Employee> findAll();
+
+    Employee findById(String id);
 }
