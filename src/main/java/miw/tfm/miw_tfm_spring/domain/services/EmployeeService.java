@@ -21,4 +21,8 @@ public class EmployeeService {
     public Stream<Employee> readAll() {
         return this.employeePersistence.findAll().stream();
     }
+
+    public Employee readById(String id){
+        return this.employeePersistence.findById(id);
+    }
 }

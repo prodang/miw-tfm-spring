@@ -1,5 +1,6 @@
 package miw.tfm.miw_tfm_spring.infraestructure.db.persistence;
 
+import miw.tfm.miw_tfm_spring.domain.exceptions.NotFoundException;
 import miw.tfm.miw_tfm_spring.domain.model.Employee;
 import miw.tfm.miw_tfm_spring.domain.persistence.EmployeePersistence;
 import miw.tfm.miw_tfm_spring.infraestructure.db.dao.EmployeeDao;
@@ -24,5 +25,11 @@ public class EmployeePersistenceDB implements EmployeePersistence {
         return this.employeeDao.findAll().stream()
                 .map(EmployeeEntity::toEmployee)
                 .collect(Collectors.toList());
+    }
+
+     public Employee findById(String id) {
+        return this.employeeDao.findById(id)
+                .map(EmployeeEntity::toEmployee)
+                .orElseThrow(() -> new NotFoundException("The identifier don't exist: "+id));
     }
 }
