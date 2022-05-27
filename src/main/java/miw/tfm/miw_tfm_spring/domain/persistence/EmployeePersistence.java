@@ -11,4 +11,6 @@ public interface EmployeePersistence {
     List<Employee> findAll();
 
     Employee findById(String id);
+
+    Employee create(Employee employee);
 }

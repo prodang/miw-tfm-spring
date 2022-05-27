@@ -1,5 +1,6 @@
 package miw.tfm.miw_tfm_spring.infraestructure.db.persistence;
 
+import miw.tfm.miw_tfm_spring.domain.exceptions.ConflictException;
 import miw.tfm.miw_tfm_spring.domain.exceptions.NotFoundException;
 import miw.tfm.miw_tfm_spring.domain.model.Employee;
 import miw.tfm.miw_tfm_spring.domain.persistence.EmployeePersistence;
@@ -32,4 +33,12 @@ public class EmployeePersistenceDB implements EmployeePersistence {
                 .map(EmployeeEntity::toEmployee)
                 .orElseThrow(() -> new NotFoundException("The identifier don't exist: "+id));
     }
+
+    public Employee create(Employee employee) {
+        if(this.employeeDao.findById(employee.getIdentifier()).isPresent()){
+            throw new ConflictException("The identifier already exist: "+employee.getIdentifier());
+        }
+        return this.employeeDao.save(new EmployeeEntity(employee)).toEmployee();
+    }
+
 }
