@@ -23,6 +23,10 @@ public class EmployeeEntity {
     private String salary;
     private String[] comments;
 
+    public EmployeeEntity(Employee employee){
+        BeanUtils.copyProperties(employee, this);
+    }
+
     public Employee toEmployee() {
         Employee employee = new Employee();
         BeanUtils.copyProperties(this, employee);

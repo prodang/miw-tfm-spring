@@ -25,4 +25,8 @@ public class EmployeeService {
     public Employee readById(String id){
         return this.employeePersistence.findById(id);
     }
+
+    public Employee createEmployee(Employee employee) {
+        return this.employeePersistence.create(employee);
+    }
 }

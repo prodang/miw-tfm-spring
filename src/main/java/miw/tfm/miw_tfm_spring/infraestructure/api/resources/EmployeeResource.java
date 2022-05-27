@@ -3,15 +3,12 @@ package miw.tfm.miw_tfm_spring.infraestructure.api.resources;
 import miw.tfm.miw_tfm_spring.domain.model.Employee;
 import miw.tfm.miw_tfm_spring.domain.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Stream;
+import javax.validation.Valid;
 
-@PreAuthorize("hasRole('ADMIN')")
+
 @RestController
 @RequestMapping(EmployeeResource.EMPLOYEES)
 public class EmployeeResource {
@@ -34,6 +31,11 @@ public class EmployeeResource {
     @GetMapping(ID_ID)
     public Employee readById(@PathVariable String id){
         return this.employeeService.readById(id);
+    }
+
+    @PostMapping
+    public Employee createEmployee(@Valid @RequestBody Employee employee){
+        return this.employeeService.createEmployee(employee);
     }
 
 }
