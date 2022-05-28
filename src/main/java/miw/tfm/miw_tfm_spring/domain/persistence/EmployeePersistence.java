@@ -13,4 +13,8 @@ public interface EmployeePersistence {
     Employee findById(String id);
 
     Employee create(Employee employee);
+
+    void delete(String id);
+
+    Employee update(String identifier, Employee employee);
 }
