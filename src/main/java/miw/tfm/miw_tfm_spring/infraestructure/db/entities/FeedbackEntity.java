@@ -20,7 +20,17 @@ public class FeedbackEntity {
     private String identifier;
     private String feedback;
 
+    public FeedbackEntity(Feedback feedback) {
+        BeanUtils.copyProperties(feedback, this);
+    }
+
     public Feedback toFeedback(FeedbackEntity feedbackEntity) {
+        Feedback feedback = new Feedback();
+        BeanUtils.copyProperties(this, feedback);
+        return feedback;
+    }
+
+    public Feedback toFeedback() {
         Feedback feedback = new Feedback();
         BeanUtils.copyProperties(this, feedback);
         return feedback;

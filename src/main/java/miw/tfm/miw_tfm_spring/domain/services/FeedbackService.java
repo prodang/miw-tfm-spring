@@ -20,4 +20,8 @@ public class FeedbackService {
     public Stream<Feedback> readAll() {
         return this.feedbackPersistence.findAll().stream();
     }
+
+    public Feedback createFeedback(Feedback feedback) {
+        return this.feedbackPersistence.create(feedback);
+    }
 }
