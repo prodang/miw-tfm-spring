@@ -28,7 +28,9 @@ public class DatabaseStarting {
         this.employeeDao.save(employeeEntity2);
         LogManager.getLogger(this.getClass()).warn("------- Create Employees Various -----------");
 
-        FeedbackEntity feedbackEntity = FeedbackEntity.builder().identifier("1").feedback("I want more free hours").build();
+        FeedbackEntity feedbackEntity = FeedbackEntity.builder().identifier("1").feedback("I want more free hours.").build();
         this.feedbackDao.save(feedbackEntity);
+        FeedbackEntity feedbackEntity2 = FeedbackEntity.builder().identifier("2").feedback("I want higher salary.").build();
+        this.feedbackDao.save(feedbackEntity2);
     }
 }
