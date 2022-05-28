@@ -27,4 +27,17 @@ public class EmployeeServiceIT {
         assertEquals("Category 2", employee.getCategory());
         assertEquals("2", employee.getSalary());
     }
+
+    @Test
+    void testCreateEmployee(){
+
+        String[] pruebaa = {"prueba", "pruebaa"};
+        Employee employeeCreation = Employee.builder().name("probando").identifier("00000000").category("00000000").salary("00000000").comments(pruebaa).build();
+        this.employeeService.createEmployee(employeeCreation);
+        Employee employee = this.employeeService.readById("00000000");
+        assertEquals("probando",employee.getName());
+        assertEquals("00000000", employee.getCategory());
+        assertEquals("00000000", employee.getSalary());
+        assertEquals("prueba", employee.getComments()[0]);
+    }
 }
