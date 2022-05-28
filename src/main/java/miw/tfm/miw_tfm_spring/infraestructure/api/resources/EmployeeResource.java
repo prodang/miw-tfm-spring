@@ -38,4 +38,14 @@ public class EmployeeResource {
         return this.employeeService.createEmployee(employee);
     }
 
+    @DeleteMapping(ID_ID)
+    public void deleteEmployee(@PathVariable String id){
+         this.employeeService.deleteEmployee(id);
+    }
+
+    @PutMapping(ID_ID)
+    public Employee updateEmployee(@PathVariable String id, @Valid @RequestBody Employee employee){
+        return this.employeeService.updateEmployee(id, employee);
+    }
+
 }

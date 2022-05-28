@@ -17,8 +17,10 @@ public class DatabaseStarting {
     }
 
     void initialize() {
-        EmployeeEntity employeeEntity = EmployeeEntity.builder().identifier("1").name("Name").category("Category 1").salary("1").comments(null).build();
-        EmployeeEntity employeeEntity2 = EmployeeEntity.builder().identifier("2").name("Name 2").category("Category 2").salary("2").comments(null).build();
+        String[] comments = {"comentario1", "comentario2"};
+        String[] comments2 ={};
+        EmployeeEntity employeeEntity = EmployeeEntity.builder().identifier("1").name("Name").category("Category 1").salary("1").comments(comments2).build();
+        EmployeeEntity employeeEntity2 = EmployeeEntity.builder().identifier("2").name("Name 2").category("Category 2").salary("2").comments(comments).build();
         this.employeeDao.save(employeeEntity);
         this.employeeDao.save(employeeEntity2);
         LogManager.getLogger(this.getClass()).warn("------- Create Employees Various -----------");

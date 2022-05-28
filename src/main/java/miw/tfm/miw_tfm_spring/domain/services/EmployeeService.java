@@ -29,4 +29,12 @@ public class EmployeeService {
     public Employee createEmployee(Employee employee) {
         return this.employeePersistence.create(employee);
     }
+
+    public void deleteEmployee(String id) {
+        this.employeePersistence.delete(id);
+    }
+
+    public Employee updateEmployee(String identifier, Employee employee) {
+        return this.employeePersistence.update(identifier, employee);
+    }
 }

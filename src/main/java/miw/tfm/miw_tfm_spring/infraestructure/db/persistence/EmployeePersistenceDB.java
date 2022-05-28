@@ -31,7 +31,7 @@ public class EmployeePersistenceDB implements EmployeePersistence {
      public Employee findById(String id) {
         return this.employeeDao.findById(id)
                 .map(EmployeeEntity::toEmployee)
-                .orElseThrow(() -> new NotFoundException("The identifier don't exist: "+id));
+                .orElseThrow(() -> new NotFoundException("The identifier doesn't exist: "+id));
     }
 
     public Employee create(Employee employee) {
@@ -39,6 +39,27 @@ public class EmployeePersistenceDB implements EmployeePersistence {
             throw new ConflictException("The identifier already exist: "+employee.getIdentifier());
         }
         return this.employeeDao.save(new EmployeeEntity(employee)).toEmployee();
+    }
+
+    @Override
+    public void delete(String id) {
+        if(!this.employeeDao.findById(id).isPresent()){
+            throw new NotFoundException("The identifier doesn't exist: "+id);
+        }
+        else{
+            this.employeeDao.deleteById(id);
+        }
+
+    }
+
+    @Override
+    public Employee update(String identifier, Employee employee) {
+        if(!this.employeeDao.findById(identifier).isPresent()){
+            throw new NotFoundException("The identifier doesn't exist: "+identifier);
+        }
+        else{
+            return this.employeeDao.save(new EmployeeEntity(employee)).toEmployee();
+        }
     }
 
 }
