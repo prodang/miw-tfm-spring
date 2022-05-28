@@ -9,4 +9,6 @@ import java.util.List;
 @Repository
 public interface FeedbackPersistence {
     List<Feedback> findAll();
+
+    Feedback create(Feedback feedback);
 }
