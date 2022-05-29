@@ -2,20 +2,26 @@ package miw.tfm.miw_tfm_spring.infraestructure.db.dao;
 
 import miw.tfm.miw_tfm_spring.infraestructure.db.entities.EmployeeEntity;
 import miw.tfm.miw_tfm_spring.infraestructure.db.entities.FeedbackEntity;
+import miw.tfm.miw_tfm_spring.infraestructure.db.entities.TimeRegistrationEntity;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
+import java.time.Month;
 
 @Repository
 public class DatabaseStarting {
 
     private final EmployeeDao employeeDao;
     private final FeedbackDao feedbackDao;
+    private final TimeRegistrationDao timeRegistrationDao;
 
     @Autowired
-    public DatabaseStarting(EmployeeDao employeeDao, FeedbackDao feedbackDao){
+    public DatabaseStarting(EmployeeDao employeeDao, FeedbackDao feedbackDao, TimeRegistrationDao timeRegistrationDao){
         this.employeeDao = employeeDao;
         this.feedbackDao = feedbackDao;
+        this.timeRegistrationDao = timeRegistrationDao;
         this.initialize();
     }
 
@@ -33,5 +39,21 @@ public class DatabaseStarting {
         FeedbackEntity feedbackEntity2 = FeedbackEntity.builder().identifier("2").feedback("I want higher salary.").build();
         this.feedbackDao.save(feedbackEntity2);
         LogManager.getLogger(this.getClass()).warn("------- Create Feedbacks Various -----------");
+
+        TimeRegistrationEntity timeRegistrationEntity = TimeRegistrationEntity.builder()
+                .id("1")
+                .entry(LocalDateTime.of(2015, Month.JULY, 29, 9, 30, 40))
+                .leave(LocalDateTime.of(2015, Month.JULY, 29, 19, 30, 0))
+                .idEmployee("1")
+                .build();
+        this.timeRegistrationDao.save(timeRegistrationEntity);
+        TimeRegistrationEntity timeRegistrationEntity2 = TimeRegistrationEntity.builder()
+                .id("2")
+                .entry(LocalDateTime.of(2015, Month.JULY, 30, 9, 30, 40))
+                .leave(LocalDateTime.of(2015, Month.JULY, 30, 18, 30, 0))
+                .idEmployee("1")
+                .build();
+        this.timeRegistrationDao.save(timeRegistrationEntity2);
+        LogManager.getLogger(this.getClass()).warn("------- Create Time Registration Various -----------");
     }
 }
