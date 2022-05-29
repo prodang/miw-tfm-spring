@@ -32,5 +32,6 @@ public class DatabaseStarting {
         this.feedbackDao.save(feedbackEntity);
         FeedbackEntity feedbackEntity2 = FeedbackEntity.builder().identifier("2").feedback("I want higher salary.").build();
         this.feedbackDao.save(feedbackEntity2);
+        LogManager.getLogger(this.getClass()).warn("------- Create Feedbacks Various -----------");
     }
 }
