@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Repository
@@ -30,6 +31,8 @@ public class FeedbackPersistenceDB implements FeedbackPersistence {
 
     @Override
     public Feedback create(Feedback feedback) {
+        String id = UUID.randomUUID().toString();
+        feedback.setIdentifier(id);
         if(this.feedbackDao.findById(feedback.getIdentifier()).isPresent()){
             throw new ConflictException("The identifier already exists: " + feedback.getIdentifier());
         }
