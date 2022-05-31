@@ -19,7 +19,7 @@ public class EmployeeServiceIT {
 
     @Test
     void testGetListEmployees(){
-        assertEquals(2, employeeService.readAll().collect(Collectors.toList()).size());
+        assertEquals(3, employeeService.readAll().collect(Collectors.toList()).size());
     }
 
     @Test
