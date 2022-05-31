@@ -1,0 +1,19 @@
+name: Beanstalk Deploy
+on:
+  push:
+    branches: ['master']
+jobs:
+  devops:
+    name: Deployment
+    runs-on: ubuntu-latest # macos-latest macos-11 windows-2019 ubuntu-20.04
+    steps:
+      - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v20
+      with:
+        aws_access_key: ${{ secrets.AWSACCESSKEYID }}
+        aws_secret_key: ${{ secrets.AWSSECRETKEY }}
+        application_name: { miw-tfm-spring }
+        environment_name: { Miwtfmspring-env }
+        version_label: ${{github.SHA}}
+        region: { us-east-1 }
+        deployment_package: target/miw-tfm-spring.jar
