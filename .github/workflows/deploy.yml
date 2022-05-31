@@ -11,8 +11,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWSACCESSKEYID }}
           aws_secret_key: ${{ secrets.AWSSECRETKEY }}
-          application_name: { miw-tfm-spring }
-          environment_name: { Miwtfmspring-env }
+          application_name: miw-tfm-spring
+          environment_name: Miwtfmspring-env
           version_label: ${{github.SHA}}
-          region: { us-east-1 }
+          region: us-east-1
           deployment_package: target/miw-tfm-spring.jar
