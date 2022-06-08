@@ -3,6 +3,7 @@ package miw.tfm.miw_tfm_spring.infraestructure.api.resources;
 import miw.tfm.miw_tfm_spring.domain.model.Employee;
 import miw.tfm.miw_tfm_spring.domain.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Stream;
@@ -23,6 +24,7 @@ public class EmployeeResource {
         this.employeeService = employeeService;
     }
 
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping(SEARCH)
     public Stream<Employee> readAll(){
         return this.employeeService.readAll();
