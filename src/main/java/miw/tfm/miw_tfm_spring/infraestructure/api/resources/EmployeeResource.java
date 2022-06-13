@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.stream.Stream;
 import javax.validation.Valid;
 
-
+@PreAuthorize("hasAuthority('ROLE_ADMIN')")
 @RestController
 @RequestMapping(EmployeeResource.EMPLOYEES)
 public class EmployeeResource {
@@ -24,7 +24,6 @@ public class EmployeeResource {
         this.employeeService = employeeService;
     }
 
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
     @GetMapping(SEARCH)
     public Stream<Employee> readAll(){
         return this.employeeService.readAll();

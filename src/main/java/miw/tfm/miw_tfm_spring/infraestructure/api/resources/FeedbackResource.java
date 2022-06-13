@@ -3,11 +3,13 @@ package miw.tfm.miw_tfm_spring.infraestructure.api.resources;
 import miw.tfm.miw_tfm_spring.domain.model.Feedback;
 import miw.tfm.miw_tfm_spring.domain.services.FeedbackService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.stream.Stream;
 
+@PreAuthorize("hasAuthority('ROLE_USER')")
 @RestController
 @RequestMapping(FeedbackResource.FEEDBACKS)
 public class FeedbackResource {
