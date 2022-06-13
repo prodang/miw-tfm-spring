@@ -24,13 +24,13 @@ public class TimeRegistrationResource {
         this.timeRegistrationService = timeRegistrationService;
     }
 
-    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @PreAuthorize("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
     @PostMapping
     public TimeRegistration create(@Valid @RequestBody TimeRegistration timeRegistration){
         return this.timeRegistrationService.create(timeRegistration);
     }
 
-    @PreAuthorize("hasAuthority('ROLE_USER')")
+    @PreAuthorize("hasAuthority('ROLE_USER') or hasAuthority('ROLE_ADMIN')")
     @PatchMapping(ID_ID+LEAVE)
     public TimeRegistration updateLeave(@PathVariable String id){
         return this.timeRegistrationService.updateLeave(id);
