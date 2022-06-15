@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Date;
 
 @Repository
 public class DatabaseStarting {
@@ -28,7 +29,7 @@ public class DatabaseStarting {
     void initialize() {
         String[] comments = {"comentario1", "comentario2"};
         String[] comments2 ={};
-        EmployeeEntity employeeEntity = EmployeeEntity.builder().identifier("peramt.pro09@gmail.com").name("Name").category("Category 1").salary("1").comments(comments2).build();
+        EmployeeEntity employeeEntity = EmployeeEntity.builder().identifier("peramt.pro09@gmail.com").name("Name 1").category("Category 1").salary("1").comments(comments2).build();
         EmployeeEntity employeeEntity2 = EmployeeEntity.builder().identifier("2").name("Name 2").category("Category 2").salary("2").comments(comments).build();
         EmployeeEntity employeeEntity3 = EmployeeEntity.builder().identifier("3").name("Sergio Merayo Alba").category("Category 3").salary("100000").comments(comments2).build();
         this.employeeDao.save(employeeEntity);
@@ -44,8 +45,8 @@ public class DatabaseStarting {
 
         TimeRegistrationEntity timeRegistrationEntity = TimeRegistrationEntity.builder()
                 .id("1")
-                .entry(LocalDateTime.of(2015, Month.JULY, 29, 9, 30, 40))
-                .leave(LocalDateTime.of(2015, Month.JULY, 29, 19, 30, 0))
+                .entry(LocalDateTime.of(2015, Month.JULY, 1, 7, 30, 40))
+                .leave(LocalDateTime.of(2015, Month.JULY, 1, 15, 30, 50))
                 .idEmployee("peramt.pro09@gmail.com")
                 .build();
         this.timeRegistrationDao.save(timeRegistrationEntity);
@@ -56,6 +57,20 @@ public class DatabaseStarting {
                 .idEmployee("2")
                 .build();
         this.timeRegistrationDao.save(timeRegistrationEntity2);
+        TimeRegistrationEntity timeRegistrationEntity3 = TimeRegistrationEntity.builder()
+                .id("3")
+                .entry(LocalDateTime.of(2015, Month.JULY, 2, 8, 30, 40))
+                .leave(LocalDateTime.of(2015, Month.JULY, 2, 14, 30, 40))
+                .idEmployee("peramt.pro09@gmail.com")
+                .build();
+        this.timeRegistrationDao.save(timeRegistrationEntity3);
+        TimeRegistrationEntity timeRegistrationEntity4 = TimeRegistrationEntity.builder()
+                .id("4")
+                .entry(LocalDateTime.of(2015, Month.JULY, 2, 15, 30, 40))
+                .leave(LocalDateTime.of(2015, Month.JULY, 2, 17, 30, 50))
+                .idEmployee("peramt.pro09@gmail.com")
+                .build();
+        this.timeRegistrationDao.save(timeRegistrationEntity4);
         LogManager.getLogger(this.getClass()).warn("------- Create Time Registration Various -----------");
     }
 }
