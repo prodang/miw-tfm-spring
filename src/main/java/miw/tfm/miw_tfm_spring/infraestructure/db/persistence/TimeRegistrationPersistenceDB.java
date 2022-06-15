@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 import java.util.stream.Stream;
 
@@ -40,8 +41,8 @@ public class TimeRegistrationPersistenceDB implements TimeRegistrationPersistenc
         return this.timeRegistrationDao.save(timeRegistrationEntity).toTimeRegistration();
     }
 
-    public Stream<TimeRegistration> findByIdEmployee(String dni) {
-        return this.timeRegistrationDao.findByIdEmployee(dni);
+    public List<TimeRegistration> findByIdEmployee(String id) {
+        return this.timeRegistrationDao.findByIdEmployee(id);
     }
 
     public Stream<TimeRegistration> findAll() {

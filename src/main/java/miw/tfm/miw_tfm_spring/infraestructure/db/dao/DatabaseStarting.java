@@ -28,7 +28,7 @@ public class DatabaseStarting {
     void initialize() {
         String[] comments = {"comentario1", "comentario2"};
         String[] comments2 ={};
-        EmployeeEntity employeeEntity = EmployeeEntity.builder().identifier("1").name("Name").category("Category 1").salary("1").comments(comments2).build();
+        EmployeeEntity employeeEntity = EmployeeEntity.builder().identifier("peramt.pro09@gmail.com").name("Name").category("Category 1").salary("1").comments(comments2).build();
         EmployeeEntity employeeEntity2 = EmployeeEntity.builder().identifier("2").name("Name 2").category("Category 2").salary("2").comments(comments).build();
         EmployeeEntity employeeEntity3 = EmployeeEntity.builder().identifier("3").name("Sergio Merayo Alba").category("Category 3").salary("100000").comments(comments2).build();
         this.employeeDao.save(employeeEntity);
@@ -46,14 +46,14 @@ public class DatabaseStarting {
                 .id("1")
                 .entry(LocalDateTime.of(2015, Month.JULY, 29, 9, 30, 40))
                 .leave(LocalDateTime.of(2015, Month.JULY, 29, 19, 30, 0))
-                .idEmployee("1")
+                .idEmployee("peramt.pro09@gmail.com")
                 .build();
         this.timeRegistrationDao.save(timeRegistrationEntity);
         TimeRegistrationEntity timeRegistrationEntity2 = TimeRegistrationEntity.builder()
                 .id("2")
                 .entry(LocalDateTime.of(2015, Month.JULY, 30, 9, 30, 40))
                 .leave(LocalDateTime.of(2015, Month.JULY, 30, 18, 30, 0))
-                .idEmployee("1")
+                .idEmployee("2")
                 .build();
         this.timeRegistrationDao.save(timeRegistrationEntity2);
         LogManager.getLogger(this.getClass()).warn("------- Create Time Registration Various -----------");

@@ -5,6 +5,7 @@ import miw.tfm.miw_tfm_spring.domain.persistence.TimeRegistrationPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 @Service
@@ -25,8 +26,8 @@ public class TimeRegistrationService {
         return this.timeRegistrationPersistence.updateLeave(id);
     }
 
-    public Stream<TimeRegistration> findByIdEmployee(String dni) {
-        return this.timeRegistrationPersistence.findByIdEmployee(dni);
+    public List<TimeRegistration> findByIdEmployee(String id) {
+        return this.timeRegistrationPersistence.findByIdEmployee(id);
     }
 
     public Stream<TimeRegistration> findAll() {

@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.stream.Stream;
 
 @RestController
@@ -38,7 +39,7 @@ public class TimeRegistrationResource {
 
     @PreAuthorize("hasAuthority('ROLE_USER')")
     @GetMapping(ID_ID)
-    public Stream<TimeRegistration> findById(@PathVariable String id){
+    public List<TimeRegistration> findById(@PathVariable String id){
         return this.timeRegistrationService.findByIdEmployee(id);
     }
 
