@@ -17,4 +17,6 @@ public interface EmployeePersistence {
     void delete(String id);
 
     Employee update(String identifier, Employee employee);
+
+    List<Employee> searchById(String id);
 }

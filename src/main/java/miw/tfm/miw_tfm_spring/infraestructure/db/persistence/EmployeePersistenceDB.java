@@ -62,4 +62,11 @@ public class EmployeePersistenceDB implements EmployeePersistence {
         }
     }
 
+    @Override
+    public List<Employee> searchById(String id) {
+        return this.employeeDao.searchById(id)
+                .map(EmployeeEntity::toEmployee)
+                .collect(Collectors.toList());
+    }
+
 }
