@@ -7,6 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.stream.Stream;
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 @PreAuthorize("hasAuthority('ROLE_ADMIN')")
@@ -32,6 +33,12 @@ public class EmployeeResource {
     @GetMapping(ID_ID)
     public Employee readById(@PathVariable String id){
         return this.employeeService.readById(id);
+    }
+
+    @GetMapping(SEARCH + ID_ID)
+    @Transactional
+    public Stream<Employee> searchById(@PathVariable String id){
+        return this.employeeService.searchById(id);
     }
 
     @PostMapping

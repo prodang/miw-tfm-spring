@@ -37,4 +37,8 @@ public class EmployeeService {
     public Employee updateEmployee(String identifier, Employee employee) {
         return this.employeePersistence.update(identifier, employee);
     }
+
+    public Stream<Employee> searchById(String id) {
+        return this.employeePersistence.searchById(id).stream();
+    }
 }
