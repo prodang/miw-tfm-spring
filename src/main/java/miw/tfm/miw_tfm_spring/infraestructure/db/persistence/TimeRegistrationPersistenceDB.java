@@ -27,7 +27,7 @@ public class TimeRegistrationPersistenceDB implements TimeRegistrationPersistenc
     public TimeRegistration create(TimeRegistration timeRegistration) {
         String id = UUID.randomUUID().toString();
         timeRegistration.setId(id);
-        timeRegistration.setEntry(LocalDateTime.now());
+        timeRegistration.setEntryHour(LocalDateTime.now());
         return this.timeRegistrationDao.save(new TimeRegistrationEntity(timeRegistration)).toTimeRegistration();
     }
 
@@ -37,7 +37,7 @@ public class TimeRegistrationPersistenceDB implements TimeRegistrationPersistenc
         }
 
         TimeRegistrationEntity timeRegistrationEntity = this.timeRegistrationDao.findById(id).get();
-        timeRegistrationEntity.setLeave(LocalDateTime.now());
+        timeRegistrationEntity.setLeaveHour(LocalDateTime.now());
         return this.timeRegistrationDao.save(timeRegistrationEntity).toTimeRegistration();
     }
 
@@ -55,8 +55,8 @@ public class TimeRegistrationPersistenceDB implements TimeRegistrationPersistenc
         this.assertIdAndModel(id, timeRegistration);
 
         TimeRegistrationEntity timeRegistrationEntity = this.timeRegistrationDao.findById(id).get();
-        timeRegistrationEntity.setEntry(timeRegistration.getEntry());
-        timeRegistrationEntity.setLeave(timeRegistration.getLeave());
+        timeRegistrationEntity.setEntryHour(timeRegistration.getEntryHour());
+        timeRegistrationEntity.setLeaveHour(timeRegistration.getLeaveHour());
         return this.timeRegistrationDao.save(timeRegistrationEntity).toTimeRegistration();
     }
 
