@@ -45,29 +45,29 @@ public class DatabaseStarting {
 
         TimeRegistrationEntity timeRegistrationEntity = TimeRegistrationEntity.builder()
                 .id("1")
-                .entry(LocalDateTime.of(2015, Month.JULY, 1, 7, 30, 40))
-                .leave(LocalDateTime.of(2015, Month.JULY, 1, 15, 30, 50))
+                .entryHour(LocalDateTime.of(2015, Month.JULY, 1, 7, 30, 40))
+                .leaveHour(LocalDateTime.of(2015, Month.JULY, 1, 15, 30, 50))
                 .idEmployee("peramt.pro09@gmail.com")
                 .build();
         this.timeRegistrationDao.save(timeRegistrationEntity);
         TimeRegistrationEntity timeRegistrationEntity2 = TimeRegistrationEntity.builder()
                 .id("2")
-                .entry(LocalDateTime.of(2015, Month.JULY, 30, 9, 30, 40))
-                .leave(LocalDateTime.of(2015, Month.JULY, 30, 18, 30, 0))
+                .entryHour(LocalDateTime.of(2015, Month.JULY, 30, 9, 30, 40))
+                .leaveHour(LocalDateTime.of(2015, Month.JULY, 30, 18, 30, 0))
                 .idEmployee("2")
                 .build();
         this.timeRegistrationDao.save(timeRegistrationEntity2);
         TimeRegistrationEntity timeRegistrationEntity3 = TimeRegistrationEntity.builder()
                 .id("3")
-                .entry(LocalDateTime.of(2015, Month.JULY, 2, 8, 30, 40))
-                .leave(LocalDateTime.of(2015, Month.JULY, 2, 14, 30, 40))
+                .entryHour(LocalDateTime.of(2015, Month.JULY, 2, 8, 30, 40))
+                .leaveHour(LocalDateTime.of(2015, Month.JULY, 2, 14, 30, 40))
                 .idEmployee("peramt.pro09@gmail.com")
                 .build();
         this.timeRegistrationDao.save(timeRegistrationEntity3);
         TimeRegistrationEntity timeRegistrationEntity4 = TimeRegistrationEntity.builder()
                 .id("4")
-                .entry(LocalDateTime.of(2015, Month.JULY, 2, 15, 30, 40))
-                .leave(LocalDateTime.of(2015, Month.JULY, 2, 17, 30, 50))
+                .entryHour(LocalDateTime.of(2015, Month.JULY, 2, 15, 30, 40))
+                .leaveHour(LocalDateTime.of(2015, Month.JULY, 2, 17, 30, 50))
                 .idEmployee("peramt.pro09@gmail.com")
                 .build();
         this.timeRegistrationDao.save(timeRegistrationEntity4);

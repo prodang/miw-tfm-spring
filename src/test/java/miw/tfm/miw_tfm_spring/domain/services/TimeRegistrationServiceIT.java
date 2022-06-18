@@ -26,8 +26,8 @@ public class TimeRegistrationServiceIT {
 
         TimeRegistration timeRegistration = TimeRegistration.builder()
                 .id("--")
-                .entry(LocalDateTime.now())
-                .leave(previousLeaveTime)
+                .entryHour(LocalDateTime.now())
+                .leaveHour(previousLeaveTime)
                 .idEmployee("--")
                 .build();
         this.timeRegistrationService.create(timeRegistration);
@@ -35,21 +35,21 @@ public class TimeRegistrationServiceIT {
 
         String id = this.timeRegistrationService.findByIdEmployee("--").get(0).getId();
         this.timeRegistrationService.updateLeave(id);
-        assertNotEquals(this.timeRegistrationService.findByIdEmployee("--").get(0).getLeave(), previousLeaveTime);
+        assertNotEquals(this.timeRegistrationService.findByIdEmployee("--").get(0).getLeaveHour(), previousLeaveTime);
 
         TimeRegistration timeToUpdate = TimeRegistration.builder()
                 .id(id)
-                .entry(LocalDateTime.of(2022, Month.JANUARY, 29, 9, 30, 40))
-                .leave(LocalDateTime.of(2022, Month.JANUARY, 29, 19, 30, 0))
+                .entryHour(LocalDateTime.of(2022, Month.JANUARY, 29, 9, 30, 40))
+                .leaveHour(LocalDateTime.of(2022, Month.JANUARY, 29, 19, 30, 0))
                 .idEmployee("--")
                 .build();
         this.timeRegistrationService.update(id, timeToUpdate);
         assertEquals(LocalDateTime.of(2022, Month.JANUARY, 29, 9, 30, 40),
                 this.timeRegistrationService.findByIdEmployee("--")
-                .get(0).getEntry()
+                .get(0).getEntryHour()
                 );
         assertEquals(LocalDateTime.of(2022, Month.JANUARY, 29, 19, 30, 0),
-                this.timeRegistrationService.findByIdEmployee("--").get(0).getLeave()
+                this.timeRegistrationService.findByIdEmployee("--").get(0).getLeaveHour()
                 );
 
          assertTrue(this.timeRegistrationService.findAll().count() > 2);

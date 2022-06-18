@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 public class TimeRegistration {
     @Id
     private String id;
-    private LocalDateTime entry;
-    private LocalDateTime leave;
+    private LocalDateTime entryHour;
+    private LocalDateTime leaveHour;
     private String idEmployee;
 }
