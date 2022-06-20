@@ -41,6 +41,8 @@ public class EmployeeServiceIT {
         assertEquals("00000000", employee.getCategory());
         assertEquals("00000000", employee.getSalary());
         assertEquals("prueba", employee.getComments()[0]);
+
+        this.employeeService.deleteEmployee(employeeCreation.getIdentifier());
     }
 
     @Test
@@ -68,5 +70,7 @@ public class EmployeeServiceIT {
 
         employeeUpdate.setName("probando");
         this.employeeService.updateEmployee("testUpdate", employeeUpdate);
+
+        this.employeeService.deleteEmployee(employeeCreation.getIdentifier());
     }
 }
