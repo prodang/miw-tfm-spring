@@ -52,7 +52,6 @@ public class TimeRegistrationServiceIT {
                 this.timeRegistrationService.findByIdEmployee("--").get(0).getLeaveHour()
                 );
 
-         assertTrue(this.timeRegistrationService.findAll().count() > 2);
     }
 
 }
