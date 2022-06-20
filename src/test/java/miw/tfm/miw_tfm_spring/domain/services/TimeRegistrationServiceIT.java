@@ -51,8 +51,6 @@ public class TimeRegistrationServiceIT {
         assertEquals(LocalDateTime.of(2022, Month.JANUARY, 29, 19, 30, 0),
                 this.timeRegistrationService.findByIdEmployee("--").get(0).getLeaveHour()
                 );
-
-         assertTrue(this.timeRegistrationService.findAll().count() > 2);
     }
 
 }
