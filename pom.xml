@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>miw.tfm</groupId>
 	<artifactId>miw-tfm-spring</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-beta-release</version>
 	<packaging>jar</packaging>
 
 	<name>${project.groupId}.${project.artifactId}</name>
